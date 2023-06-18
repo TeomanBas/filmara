@@ -2,4 +2,27 @@
     margin-top: 6%;
     border-radius: 5px;
 }
-
+#icerik{
+    margin-top:2%;
+}
+#icerikresim{
+    margin:1%;
+}
+#icerikaciklama{
+    margin:1%;
+    padding:3%;
+}
+#digericerik{
+    margin-top: 2%;
+}
+#digerposter{
+    margin-top: 2%;
+}
+#digericerikfilm{
+    margin: 2% 1%;
+}
+#digericerik p{
+    margin-top: 2%;
+    padding: 2%;
+    word-break: break-word;
+}
