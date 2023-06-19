@@ -9,48 +9,49 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"  crossorigin="anonymous"></script>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css" rel="stylesheet">
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+  <script src="./js/script.js"></script>
   <link rel="stylesheet" href="./css/style.css">
   <title>Film Ara</title>
 </head>
-<body class="container-fluid">
+<body class="container-fluid" ng-app="filmara" ng-controller="kontrol">
   <nav class="navbar navbar-expand navbar-dark bg-dark" id="sbox">
     <div class="container-fluid">
       <div class="collapse navbar-collapse justify-content-center" >
         <form class="d-flex">
-          <input class="form-control me-2" type="text" placeholder="Filmin Adını Yazınız...">
+          <input class="form-control me-2" type="text" placeholder="Filmin Adını Yazınız..." ng-model="arananFilm" ng-change="guncelle()">
         </form>
       </div>
     </div>
   </nav>
-  <div id="icerik" class="container-fluid border rounded">
+  <div id="icerik" class="container-fluid border rounded" ng-if="sonuc.Response=='True'">
     <div class="row">
       <div class="col-lg-6" id="icerikresim">
-        <img class="img-fluid border rounded mx-auto d-block" src=""/>
+        <img class="img-fluid border rounded mx-auto d-block" ng-src="{{ sonuc.Poster }}"/>
       </div>
       <div class="col-lg-4 border rounded" id="icerikaciklama">
-        <p><a href="" target="_blank"></a></p>
-        <strong>IMDB Puanı :</strong> 
-        <span class="label label-info">imdb rating</span>
-        <p>tarih</p>
+        <p><a href="http://imdb.com/title/{{ sonuc.imdbID }}" target="_blank">{{ sonuc.Title }}</a></p>
+        <strong ng-if="sonuc.imdbRating!='N/A'">IMDB Puanı :</strong> 
+        <span ng-if="sonuc.imdbRating!='N/A'" class="label label-info">{{ sonuc.imdbRating }}</span>
+        <p ng-if="sonuc.Released!='N/A'">{{ sonuc.Released }}</p>
         <hr>
-        <p >açıklama</p>
-        <p class="label label-info"><b>Yönetmen : </b></p>
-        <p class="label label-info"><b>Oyuncular : </b></p>
-        <p class="label label-info"><b>Tür : </b></p>
+        <p ng-if="sonuc.Plot!='N/A'">{{ sonuc.Plot }}</p>
+        <p ng-if="sonuc.Director!='N/A'" class="label label-info"><b>Yönetmen : </b>{{ sonuc.Director }}</p>
+        <p ng-if="sonuc.Actors!='N/A'" class="label label-info"><b>Oyuncular : </b>{{ sonuc.Actors }}</p>
+        <p ng-if="sonuc.Genre!='N/A'" class="label label-info"><b>Tür : </b>{{ sonuc.Genre }}</p>
       </div>
     </div>
   </div>
-  <div id="digericerik" class="border rounded">
+  <div id="digericerik" class="border rounded" ng-if="ilgiliSonuclar.Response=='True'">
     <div class="row justify-content-center">
-      <div class="col-lg-2 border rounded" id="digericerikfilm">
+      <div class="col-lg-2 border rounded" id="digericerikfilm" ng-repeat="film in ilgiliSonuclar.Search">
         <div id="digerposter">
-          <img class="img-fluid border rounded"src="" alt="poster ">
+          <img class="img-fluid border rounded" src="{{ film.Poster }}" alt="poster">
         </div>
         <hr>
         <div>
-          <p><b>Filmin ismi:</b></p>
-          <p><b>Tarih:</b></p>
-          <p><b>Tür:</b></p>
+          <p><b>{{ film.Title }}</b></p>
+          <p><b>{{ film.Year }}</b></p>
+          <p><b>{{ film.Type }}</b></p>
         </div>
       </div>
     </div>
