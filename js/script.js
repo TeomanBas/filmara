@@ -13,17 +13,37 @@ angular.module('filmara', [])
   };
 
   function veriGetir() {
-    $http.get("http://www.omdbapi.com/?apikey=&t=" + $scope.arananFilm + "&tomatoes=true&plot=full")
-      .success(function(response) {
-        $scope.sonuc = response;
-      });
+    var request1 = $http({
+      method: "post",
+      url: "http://192.168.100.207/filmara/apiserver/",
+      data: {
+        film:$scope.arananFilm,
+        tip:"t",
+      },
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded'
+      }
+    });
+    request1.success(function(response) {
+      $scope.sonuc= response; 
+    });
 
-    $http.get("http://www.omdbapi.com/?apikey=&s=" + $scope.arananFilm )
-      .success(function(response) {
-        $scope.ilgiliSonuclar = response;
-      });
+    var request2 = $http({
+      method: "post",
+      url: "http://192.168.100.207/filmara/apiserver/",
+      data: {
+        film:$scope.arananFilm,
+        tip:"s",
+      },
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded'
+      }
+    });
+    request2.success(function(response) {
+      $scope.ilgiliSonuclar= response; 
+    });
   }
-
+  
   $scope.yenile = function(film) {
     $scope.arananFilm = film.Title;
     $scope.guncelle();
