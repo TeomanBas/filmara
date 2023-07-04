@@ -15,13 +15,13 @@ angular.module('filmara', [])
   function veriGetir() {
     var request1 = $http({
       method: "post",
-      url: "http://192.168.100.207/filmara/apiserver/",
+      url: "api_request_url",
       data: {
         film:$scope.arananFilm,
         tip:"t",
       },
       headers: {
-        'Content-Type': 'application/x-www-form-urlencoded'
+        'Content-Type': 'application/json'
       }
     });
     request1.success(function(response) {
@@ -30,7 +30,7 @@ angular.module('filmara', [])
 
     var request2 = $http({
       method: "post",
-      url: "http://192.168.100.207/filmara/apiserver/",
+      url: "api_request_url",
       data: {
         film:$scope.arananFilm,
         tip:"s",

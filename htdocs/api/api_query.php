@@ -5,7 +5,7 @@ function api_query($data){
     require_once("./config/config.php");
     $domain = DOMAIN;
     $api_key = API_KEY;
-    $parameters = "&tomatoes=true&plot=full";
+    $parameters = "api_url_parameters";
     if($title=="t"){
         $url=$domain."?apikey=".$api_key."&t=".$film->film.$parameters;
     }else{

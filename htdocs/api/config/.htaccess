@@ -1,0 +1,4 @@
+AuthType Basic
+AuthName "Lütfen şifrenizi giriniz"
+AuthUserFile c:\...\.htpasswd
+require valid-user
