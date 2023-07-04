@@ -36,7 +36,7 @@ angular.module('filmara', [])
         tip:"s",
       },
       headers: {
-        'Content-Type': 'application/x-www-form-urlencoded'
+        'Content-Type': 'application/json'
       }
     });
     request2.success(function(response) {
