@@ -1,5 +1,5 @@
 #sbox{
-    margin-top: 6%;
+    margin-top: 1%;
     border-radius: 5px;
 }
 #icerik{
@@ -25,4 +25,16 @@
     margin-top: 2%;
     padding: 2%;
     word-break: break-word;
+}
+#bnr{
+    margin-top: 5%;
+    margin-bottom: 1%;
+    width: 100%;
+
+}
+#github{
+    margin-left: 1%;
+}
+#visitor{
+    margin-left: 1%;
 }
