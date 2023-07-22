@@ -7,7 +7,6 @@ angular.module('filmara', [])
     $scope.arananFilm = "";
     veriGetir();
   }
-
   $scope.guncelle = function() {
     aramaIslemi = setTimeout(veriGetir, 100);
   };
@@ -43,6 +42,24 @@ angular.module('filmara', [])
       $scope.ilgiliSonuclar= response; 
     });
   }
+
+  $scope.VCounter = function() {
+    var request = $http({
+      method: "post",
+      url: "http://192.168.100.207/filmara/htdocs/api/",
+      data: {
+        visitquery:"visitor",
+      },
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    });
+    request.success(function(response) {
+      $scope.visitor= response; 
+    });
+
+  }
+  $scope.VCounter();
   
   $scope.yenile = function(film) {
     $scope.arananFilm = film.Title;
