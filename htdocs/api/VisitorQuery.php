@@ -11,7 +11,10 @@ class VisitorQuery{
         $this->dbobject->VisitorAdd(IdentityHash(GetUserIdentity()));
     }
     function VisitorCount(){
-        print($this->dbobject->VisitorCount());
+        $response= new stdClass;
+        $response->visitquery= $this->dbobject->VisitorCount();
+        $response= json_encode($response);
+        print_r($response);
     }
     function __destruct(){
         unset($this->dbobject);
