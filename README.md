@@ -1,6 +1,11 @@
 # Film Arama Uygulaması
 [Film Arama Uygulaması](https://filmara.rf.gd) imdb üzerinden film araması yapan basit bir web uygulamasıdır.
 
+[Demo](filmara.rf.gd)
+
+<img src="img/filmara_demo.png" alt="demo">
+
+
 ## Açıklama
 - **api_request_url:** Asıl api uygulaması ile tarayıcı arasındaki web servisinin istekleri kabul ettiği adrestir.
 - **api dizini:** Aradaki api katmanını oluşturan uygulamayı oluşturan dosyalardır.
